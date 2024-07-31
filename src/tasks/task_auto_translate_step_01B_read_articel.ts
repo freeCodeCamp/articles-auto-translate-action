@@ -39,7 +39,7 @@ export async function task_auto_translate_step_01B_read_articel(options: main_op
     const markdown_file_path = join(options.with_task_fetch_to_save_path, markdown_file_name);
     await move(with_orginal_markdown_file_path, markdown_file_path, { overwrite: true });
     console.log('Moved the original markdown file to:', markdown_file_path);
-    
+
     const original_meta = {
         title: str_title,
         date: str_date,
@@ -50,7 +50,7 @@ export async function task_auto_translate_step_01B_read_articel(options: main_op
     }
     // Manually assign the meta and markdown file path to the options
     Object.assign(options, {
-        step_01_result_mdfiles: [with_orginal_markdown_file_path],
+        step_01_result_mdfiles: [markdown_file_path],
         step_01_result_metas: [original_meta]
     });
 
