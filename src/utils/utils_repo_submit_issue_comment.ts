@@ -1,5 +1,4 @@
 
-import { debug } from '@actions/core';
 import { context } from '@actions/github';
 import { Octokit } from '@octokit/rest';
 import { main_options } from '..';
@@ -30,8 +29,9 @@ export async function utils_repo_submit_issue_comment(options: utils_repo_submit
             repo: repository.name,
             issue_number: issue.number
         });
-        console.log('comments:', comments);
-        const similar = compareTwoStrings(comments[comments.length - 1].body, str_comment);
+        // console.log('comments:', comments);
+        const str_latest_comment_body = comments[comments.length - 1]?.body || '';
+        const similar = compareTwoStrings(str_latest_comment_body, str_comment);
         console.log('similar:', similar);
         // If the previous comment is similar to the current comment, overwrite it.
         if (similar > 0.6) {

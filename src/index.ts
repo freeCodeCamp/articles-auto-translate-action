@@ -4,8 +4,6 @@ import { utils_repo_submit_issue_comment } from './utils/utils_repo_submit_issue
 import { task_auto_translate_step_01B_read_articel } from './tasks/task_auto_translate_step_01B_read_articel';
 import { task_auto_translate_step_02_trans_articels } from './tasks/task_auto_translate_step_02_trans_articels';
 import { join } from 'path';
-import { exists, move } from 'fs-extra';
-import { readFile } from 'fs';
 
 export class main_options {
   with_issue_title = getInput('with_issue_title')
