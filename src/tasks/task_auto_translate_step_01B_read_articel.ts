@@ -36,8 +36,10 @@ export async function task_auto_translate_step_01B_read_articel(options: main_op
 
     // Move the original markdown file to the target directory, to keep original directory clean.
     const markdown_file_name = with_orginal_markdown_file_path.split('/').pop();
-    await move(with_orginal_markdown_file_path, join(options.with_task_fetch_to_save_path, markdown_file_name), { overwrite: true });
-
+    const markdown_file_path = join(options.with_task_fetch_to_save_path, markdown_file_name);
+    await move(with_orginal_markdown_file_path, markdown_file_path, { overwrite: true });
+    console.log('Moved the original markdown file to:', markdown_file_path);
+    
     const original_meta = {
         title: str_title,
         date: str_date,
