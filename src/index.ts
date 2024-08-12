@@ -8,6 +8,7 @@ import { join } from 'path';
 export class main_options {
   with_issue_title = getInput('with_issue_title')
   with_issue_body = getInput('with_issue_body')
+  with_label_name = getInput('with_label_name')
   with_github_token = getInput('with_github_token')
   with_task_fetch_and_save_force = 'true' === getInput('with_task_fetch_and_save_force')
   with_task_fetch_to_save_path = getInput('with_task_fetch_to_save_path')
@@ -36,8 +37,13 @@ async function main() {
   const options = Object.assign(new main_options(), {});
   console.log('Print all options:', options);
 
-  const { with_issue_title } = options;
-  if (!with_issue_title.toLocaleLowerCase().startsWith('[auto]')) return;
+  // Run this workflow only if this workflow was triggered by adding the `auto` label
+  const { with_label_name } = options;
+  console.log('label:', with_label_name)
+  if (!(with_label_name.toLowerCase() === 'auto')) {
+    console.log("The workflow wasn't triggered by the 'auto' label. Skipping the auto translate action.")
+    return;
+  };
 
   let str_task_result = '';
 
