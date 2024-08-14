@@ -8,6 +8,9 @@ inputs:
   with_issue_body:
     description: 'Issue body.'
     required: true
+  with_label_name:
+    description: 'The label that triggered this workflow'
+    required: true
   with_github_token:
     description: 'GitHub token.'
     required: true

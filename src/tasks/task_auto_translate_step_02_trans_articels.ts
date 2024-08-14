@@ -3,11 +3,13 @@ import { main_options } from "..";
 import { debug } from "@actions/core";
 import { ensureFile, readFile, writeFile } from "fs-extra";
 
+// We are using ISO 639-1 language codes here https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+// simply to align with the codes used in other parts of our platform.
 const map_str_prompts: any = {
-    "zh-cn": "我有段 md 文件，请翻译为中文。翻译需要严格保留源文件 markdown 排版布局，请直接输出，不要在作询问。\n",
-    "ja-jp": "この Markdown を日本語に翻訳してください。逐語訳ではなく、日本語の IT 系ウェブメディアの記事として自然な表現にしてください。Markdown の書式は、原文から変更しないでください。また、半角英数字と日本語の文字の間には半角スペースを入れてください。追加の質問はせず、直接出力してください。\n",
-    "es-es": "Tengo un archivo md, por favor tradúzcalo al español. La traducción debe mantener estrictamente el formato y la disposición del archivo original en markdown. Por favor, simplemente muéstrelo sin hacer preguntas.\n",
-    "pt-br": "Eu tenho um arquivo md, por favor, traduza-o para o português. A tradução deve manter rigorosamente a formatação e layout markdown do arquivo original. Por favor, forneça a tradução diretamente sem fazer perguntas."
+    "zh": "我有段 md 文件，请翻译为中文。翻译需要严格保留源文件 markdown 排版布局，请直接输出，不要在作询问。\n",
+    "ja": "この Markdown を日本語に翻訳してください。逐語訳ではなく、日本語の IT 系ウェブメディアの記事として自然な表現にしてください。Markdown の書式は、原文から変更しないでください。また、半角英数字と日本語の文字の間には半角スペースを入れてください。追加の質問はせず、直接出力してください。\n",
+    "es": "Tengo un archivo md, por favor tradúzcalo al español. La traducción debe mantener estrictamente el formato y la disposición del archivo original en markdown. Por favor, simplemente muéstrelo sin hacer preguntas.\n",
+    "pt": "Eu tenho um arquivo md, por favor, traduza-o para o português. A tradução deve manter rigorosamente a formatação e layout markdown do arquivo original. Por favor, forneça a tradução diretamente sem fazer perguntas."
 }
 
 async function translate(str_md: string, str_prompt: string, with_task_translate_openai_api_key: string) {
@@ -37,7 +39,9 @@ export async function task_auto_translate_step_02_trans_articels(
         with_task_translate_to_save_path,
         step_01_result_mdfiles
     } = options;
-    const target_lang_code = with_issue_title.match(/\[Auto\]\[(.+?)\]/)?.[1] || '';
+    // Extract the target language code from the issue title.
+    // It is expected to start with a language code enclosed in square brackets, e.g. [ja]
+    const target_lang_code = with_issue_title.match(/^\[(.+?)\]/)?.[1] || '';
     debug('target_language:' + target_lang_code);
     const str_prompt = map_str_prompts[target_lang_code];
     debug('str_prompt:' + str_prompt);
