@@ -24,9 +24,9 @@ export class main_options {
   str_comment = ''
 }
 
-function gen_issue_comment(meta, path, repo, ref, raw_file, translated_file) {
+function gen_issue_comment(meta, repo, ref, raw_file, translated_file) {
   return `
-- Original URL: [${meta.title}](${path})
+- Original URL: [${meta.title}](${meta.originalURL})
 - Original author: [${meta.author || 'anonymous'}](${meta.authorURL})
 - Markdown file: [click to view](https://github.com/${repo.owner}/${repo.repo}/blob/${join(ref.replace(/^refs\/heads\//, ''), raw_file)})
 - Translated file: [click to edit](https://github.com/${repo.owner}/${repo.repo}/edit/${join(ref.replace(/^refs\/heads\//, ''), translated_file)})
@@ -64,7 +64,6 @@ async function main() {
       str_comment += `==========${i - 1}==========\n\n`;
       str_comment += gen_issue_comment(
         options.step_01_result_metas[i],
-        options.step_01_result_mdfiles[i],
         context.repo, context.ref,
         options.step_01_result_mdfiles[i],
         options.step_02_result_mdfiles[i]
@@ -74,7 +73,6 @@ async function main() {
   } else {
     str_comment = gen_issue_comment(
       options.step_01_result_metas[0],
-      options.step_01_result_mdfiles[0],
       context.repo, context.ref,
       options.step_01_result_mdfiles[0],
       options.step_02_result_mdfiles[0]
