@@ -29,7 +29,8 @@ function gen_issue_comment(meta, path, repo, ref, raw_file, translated_file) {
 - Original URL: [${meta.title}](${path})
 - Original author: [${meta.author || 'anonymous'}](${meta.authorURL})
 - Markdown file: [click to view](https://github.com/${repo.owner}/${repo.repo}/blob/${join(ref.replace(/^refs\/heads\//, ''), raw_file)})
-- Translated file: [click to edit](https://github.com/${repo.owner}/${repo.repo}/edit/${join(ref.replace(/^refs\/heads\//, ''), translated_file)}),
+- Translated file: [click to edit](https://github.com/${repo.owner}/${repo.repo}/edit/${join(ref.replace(/^refs\/heads\//, ''), translated_file)})
+- Open in github.dev editor: [click to open github.dev](https://github.dev/${repo.owner}/${repo.repo}/blob/${join(ref.replace(/^refs\/heads\//, ''), translated_file)})
 `;
 
 }
