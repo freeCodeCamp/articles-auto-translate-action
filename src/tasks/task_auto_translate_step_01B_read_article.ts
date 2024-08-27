@@ -2,7 +2,7 @@ import { move, readFile } from "fs-extra";
 import { main_options } from "..";
 import { join } from "path";
 
-export async function task_auto_translate_step_01B_read_articel(options: main_options) {
+export async function task_auto_translate_step_01B_read_article(options: main_options) {
     const { with_orginal_markdown_file_path } = options;
     /** **********************************************************************************************************************************
      *  Article markdown file should be start like:

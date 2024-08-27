@@ -30,7 +30,7 @@ async function translate(str_md: string, str_prompt: string, with_task_translate
     return response;
 }
 
-export async function task_auto_translate_step_02_trans_articels(
+export async function task_auto_translate_step_02_trans_articles(
     options: main_options
 ) {
     let {
