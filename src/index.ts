@@ -1,8 +1,8 @@
 import { getInput } from '@actions/core';
 import { context } from '@actions/github';
 import { utils_repo_submit_issue_comment } from './utils/utils_repo_submit_issue_comment';
-import { task_auto_translate_step_01B_read_articel } from './tasks/task_auto_translate_step_01B_read_articel';
-import { task_auto_translate_step_02_trans_articels } from './tasks/task_auto_translate_step_02_trans_articels';
+import { task_auto_translate_step_01B_read_article } from './tasks/task_auto_translate_step_01B_read_article';
+import { task_auto_translate_step_02_trans_articles } from './tasks/task_auto_translate_step_02_trans_articles';
 import { join } from 'path';
 
 export class main_options {
@@ -49,8 +49,8 @@ async function main() {
   let str_task_result = '';
 
   // Read the meta from the original markdown file
-  await task_auto_translate_step_01B_read_articel(options);
-  await task_auto_translate_step_02_trans_articels(options);
+  await task_auto_translate_step_01B_read_article(options);
+  await task_auto_translate_step_02_trans_articles(options);
 
   const count_raw_article = options.step_01_result_mdfiles.length;
   const count_translated_article = options.step_02_result_mdfiles.length;
