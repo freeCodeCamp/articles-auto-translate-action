@@ -9,7 +9,8 @@ const map_str_prompts: any = {
     "zh": "我有段 md 文件，请翻译为中文。翻译需要严格保留源文件 markdown 排版布局，请直接输出，不要在作询问。\n",
     "ja": "この Markdown を日本語に翻訳してください。逐語訳ではなく、日本語の IT 系ウェブメディアの記事として自然な表現にしてください。Markdown の書式は、原文から変更しないでください。また、半角英数字と日本語の文字の間には半角スペースを入れてください。追加の質問はせず、直接出力してください。\n",
     "es": "Tengo un archivo md, por favor tradúzcalo al español. La traducción debe mantener estrictamente el formato y la disposición del archivo original en markdown. Por favor, simplemente muéstrelo sin hacer preguntas.\n",
-    "pt": "Eu tenho um arquivo md, por favor, traduza-o para o português. A tradução deve manter rigorosamente a formatação e layout markdown do arquivo original. Por favor, forneça a tradução diretamente sem fazer perguntas."
+    "pt": "Eu tenho um arquivo md, por favor, traduza-o para o português. A tradução deve manter rigorosamente a formatação e layout markdown do arquivo original. Por favor, forneça a tradução diretamente sem fazer perguntas.",
+    "it": "Ho un file md, per favore traducilo in italiano. La traduzione dovrà mantenere rigorosamente il formato e l'impaginazione del file markdown originale. Per favore, mostra il file tradotto senza fare domande."
 }
 
 async function translate(str_md: string, str_prompt: string, with_task_translate_openai_api_key: string) {
