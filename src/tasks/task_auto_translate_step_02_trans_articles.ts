@@ -92,6 +92,8 @@ export async function task_auto_translate_step_02_trans_articles(
             console.log('\n')
         }
 
+        str_md_translated = str_md_translated.split('\n').map(s=>s+=' ').join('\n');
+
         // 写文件
         const output_mdfile_path = with_task_translate_to_save_path + '/' + mdfile.split('/').pop();
         debug('output_mdfile_path:' + output_mdfile_path);
