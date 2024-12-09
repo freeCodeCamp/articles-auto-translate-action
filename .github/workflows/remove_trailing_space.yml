@@ -1,0 +1,18 @@
+name: Format PR Files
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'  # 针对所有 Markdown 文件进行处理
+
+jobs:
+  whitespace:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Remove trailing whitespaces from Markdown files
+        run: |
+          find . -name "*.md" -exec sed -i 's/ $//' {} \;
