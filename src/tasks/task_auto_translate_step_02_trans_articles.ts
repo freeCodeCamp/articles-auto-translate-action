@@ -95,7 +95,6 @@ export async function task_auto_translate_step_02_trans_articles(
          // 插入的代码及调试日志
          console.log("Before adding trailing spaces:");
          console.log(str_md_translated);
-         str_md_translated = str_md_translated.split('\n').map(s => s += ' ').join('\n');
          console.log("After adding trailing spaces:");
          console.log(str_md_translated);
 

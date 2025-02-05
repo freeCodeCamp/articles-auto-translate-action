@@ -1,15 +1,15 @@
-exports.id = 33;
-exports.ids = [33];
+exports.id = 486;
+exports.ids = [486];
 exports.modules = {
 
-/***/ 7666:
+/***/ 9803:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 
 if (!globalThis.DOMException) {
   try {
-    const { MessageChannel } = __webpack_require__(8167),
+    const { MessageChannel } = __webpack_require__(1267),
     port = new MessageChannel().port1,
     ab = new ArrayBuffer()
     port.postMessage(ab, [ab, ab])
@@ -25,27 +25,29 @@ module.exports = globalThis.DOMException
 
 /***/ }),
 
-/***/ 2033:
+/***/ 9486:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  fileFromPath: () => (/* binding */ fileFromPath)
+  "fileFromPath": () => (/* binding */ fileFromPath),
+  "fileFromPathSync": () => (/* binding */ fileFromPathSync),
+  "isFile": () => (/* reexport */ isFile/* isFile */.z)
 });
 
-// UNUSED EXPORTS: fileFromPathSync, isFile
-
 // EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(9896);
+var external_fs_ = __webpack_require__(7147);
 // EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(6928);
-// EXTERNAL MODULE: ./node_modules/node-domexception/index.js
-var node_domexception = __webpack_require__(7666);
-// EXTERNAL MODULE: ./node_modules/formdata-node/lib/esm/File.js
-var File = __webpack_require__(2928);
-;// CONCATENATED MODULE: ./node_modules/formdata-node/lib/esm/isPlainObject.js
+var external_path_ = __webpack_require__(1017);
+// EXTERNAL MODULE: ./node_modules/.pnpm/node-domexception@1.0.0/node_modules/node-domexception/index.js
+var node_domexception = __webpack_require__(9803);
+// EXTERNAL MODULE: ./node_modules/.pnpm/formdata-node@4.4.1/node_modules/formdata-node/lib/esm/File.js
+var File = __webpack_require__(4471);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/formdata-node@4.4.1/node_modules/formdata-node/lib/esm/isPlainObject.js
 const getType = (value) => (Object.prototype.toString.call(value).slice(8, -1).toLowerCase());
 function isPlainObject(value) {
     if (getType(value) !== "object") {
@@ -60,9 +62,9 @@ function isPlainObject(value) {
 }
 /* harmony default export */ const esm_isPlainObject = (isPlainObject);
 
-// EXTERNAL MODULE: ./node_modules/formdata-node/lib/esm/isFile.js
-var isFile = __webpack_require__(928);
-;// CONCATENATED MODULE: ./node_modules/formdata-node/lib/esm/fileFromPath.js
+// EXTERNAL MODULE: ./node_modules/.pnpm/formdata-node@4.4.1/node_modules/formdata-node/lib/esm/isFile.js
+var isFile = __webpack_require__(2131);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/formdata-node@4.4.1/node_modules/formdata-node/lib/esm/fileFromPath.js
 var __classPrivateFieldSet = (undefined && undefined.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -130,12 +132,12 @@ function createFileFromPath(path, { mtimeMs, size }, filenameOrOptions, options 
     if (!filename) {
         filename = file.name;
     }
-    return new File/* File */.Z([file], filename, {
+    return new File/* File */.$([file], filename, {
         ...options, lastModified: file.lastModified
     });
 }
 function fileFromPathSync(path, filenameOrOptions, options = {}) {
-    const stats = statSync(path);
+    const stats = (0,external_fs_.statSync)(path);
     return createFileFromPath(path, stats, filenameOrOptions, options);
 }
 async function fileFromPath(path, filenameOrOptions, options) {
