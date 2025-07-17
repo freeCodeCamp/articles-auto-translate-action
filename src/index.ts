@@ -16,7 +16,7 @@ export class main_options {
   with_task_fetch_to_ignore_selector = getInput('with_task_fetch_to_ignore_selector')
   with_task_translate_openai_api_key = getInput('with_task_translate_openai_api_key')
   with_task_translate_to_save_path = getInput('with_task_translate_to_save_path')
-  with_orginal_markdown_file_path = getInput('with_orginal_markdown_file_path')
+  with_original_markdown_file_path = getInput('with_original_markdown_file_path')
 
   step_01_result_metas: any[] = []
   step_01_result_mdfiles: string[] = []
