@@ -3,7 +3,7 @@ import { main_options } from "..";
 import { join } from "path";
 
 export async function task_auto_translate_step_01B_read_article(options: main_options) {
-    const { with_orginal_markdown_file_path } = options;
+    const { with_original_markdown_file_path } = options;
     /** **********************************************************************************************************************************
      *  Article markdown file should be start like:
      * ---
@@ -16,7 +16,7 @@ export async function task_auto_translate_step_01B_read_article(options: main_op
      * ---
      *************************************************************************************************************************************/
 
-    const str_md = await readFile(with_orginal_markdown_file_path, 'utf-8');
+    const str_md = await readFile(with_original_markdown_file_path, 'utf-8');
     const arr_str_md = str_md.split('\n');
     let str_title = '', str_date = '', str_author = '', str_author_url = '', str_original_url = '', str_translator = '', str_reviewer = '';
     let count_flag_scan = 0;
@@ -36,9 +36,9 @@ export async function task_auto_translate_step_01B_read_article(options: main_op
     }
 
     // Move the original markdown file to the target directory, to keep original directory clean.
-    const markdown_file_name = with_orginal_markdown_file_path.split('/').pop();
+    const markdown_file_name = with_original_markdown_file_path.split('/').pop();
     const markdown_file_path = join(options.with_task_fetch_to_save_path, markdown_file_name);
-    await move(with_orginal_markdown_file_path, markdown_file_path, { overwrite: true });
+    await move(with_original_markdown_file_path, markdown_file_path, { overwrite: true });
     console.log('Moved the original markdown file to:', markdown_file_path);
 
     const original_meta = {
